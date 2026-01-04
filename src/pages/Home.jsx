@@ -7,6 +7,7 @@ import TopDevelopers from "../Component/TopDevelopers";
 import FeaturedProperties from "../Component/FeaturedProperties";
 import Stats from "../Component/Stats";
 import WhyCountryroof from "../Component/WhyCountryroof";
+import FloorPlan from "../Component/FloorPlan";
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
    <FeaturedProperties/>
    <Stats/>
    <WhyCountryroof/>
+   <FloorPlan/>
  </div>
   );
 };
