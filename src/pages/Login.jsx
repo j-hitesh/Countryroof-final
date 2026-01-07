@@ -75,9 +75,9 @@ const Login = () => {
   };
 
  return (
-  <div className="min-h-screen flex flex-col">
+  <div className="h-139 flex flex-col">
 
-    <nav className="fixed top-0 left-0 w-full bg-[#FCFCFC] shadow-md z-50 h-20 font-poppins">
+    <nav className="fixed top-0 left-0 w-full bg-[#FCFCFC] shadow-md z-50 h-20">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
         <div className="flex items-center gap-3">
           <Link to="/">
@@ -91,7 +91,7 @@ const Login = () => {
 
         <Link
           to="/PostProperty"
-          className="bg-[#1a4d5c] text-white px-4 py-2 rounded-md text-sm font-semibold" 
+          className="bg-[#2D548F] text-white px-4 py-2 rounded-md text-sm font-semibold" 
         >
           Post Property
         </Link>
@@ -107,13 +107,12 @@ const Login = () => {
     </nav>
 
     <div
-      className="flex flex-col  items-center justify-center flex-1 px-4 pt-32 pb-10 bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('https://countryroof.in/upload/property/thambnail/1827637885326559.jpg')",
-      }}>
+      className="flex flex-row items-center">
+       <div>
+          <img className="object-cover" src="https://countryroof.in/upload/property/thambnail/1827637885326559.jpg" alt="Imgae" />
+       </div>
 
-      <div className="bg-white/20 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl w-full max-w-md p-8">
+      <div className="w-xl p-8 mt-20">
 
         <div className="flex justify-center mb-6">
           <img
@@ -125,7 +124,7 @@ const Login = () => {
         <button
           onClick={handleGoogleLogin}
           disabled={loading}
-          className="w-full bg-white shadow-md flex items-center justify-center gap-3 py-3 rounded-lg border hover:bg-gray-100 transition"
+          className="w-full bg-white shadow-md flex items-center justify-center gap-3 py-3 rounded-lg border hover:bg-gray-100 transition cursor-pointer"
         >
           <img
             src="https://developers.google.com/identity/images/g-logo.png"
@@ -137,18 +136,15 @@ const Login = () => {
           </span>
         </button>
 
-        {firebaseError && (
-          <p className="text-red-600 text-sm mt-3 text-center">{firebaseError}</p>
-        )}
-
         <form onSubmit={handleSubmit} noValidate className="mt-6">
 
-          <label className="text-white text-sm font-medium">Email</label>
+          <label className="text-sm font-medium">Email</label>
           <input
             type="email"
             value={email}
+            placeholder="Enter Your Email"
             onChange={(e) => setEmail(e.target.value)}
-            className={`w-full bg-white/70 backdrop-blur border rounded-lg px-3 py-2 mt-1 ${
+            className={`w-full bg-white border rounded-lg px-3 py-2 mt-1 ${
               errors.email ? "border-red-500" : "border-gray-300"
             }`}
           />
@@ -156,12 +152,13 @@ const Login = () => {
             <p className="text-red-300 text-sm">{errors.email}</p>
           )}
 
-          <label className="text-white text-sm font-medium mt-4 block">Password</label>
+          <label className="text-sm font-medium mt-4 block">Password</label>
           <input
             type="password"
             value={password}
+            placeholder="Enter your Password"
             onChange={(e) => setPassword(e.target.value)}
-            className={`w-full bg-white/70 backdrop-blur border rounded-lg px-3 py-2 mt-1 ${
+            className={`w-full bg-white border rounded-lg px-3 py-2 mt-1 ${
               errors.password ? "border-red-500" : "border-gray-300"
             }`}
           />
@@ -182,15 +179,15 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl mt-6 transition disabled:opacity-60"
+            className="w-full bg-[#2D548F] hover:bg-blue-700 text-white py-2 rounded-xl mt-6 transition disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
 
-        <p className="text-center text-white mt-4">
+        <p className="text-center text-black mt-4">
           Don’t have an account?{" "}
-          <Link to="/Sign" className="underline font-medium">Sign up</Link>
+          <Link to="/Sign" className="underline font-medium text-red-500">Sign up</Link>
         </p>
       </div>
     </div>

@@ -5,12 +5,11 @@ const steps = [
   "Basic Details",
   "Properties Details",
   "Location",
+  "Description",
   "Specifications",
   "Pricing",
   "Amenities",
   "Media",
-  "Description",
- 
 ];
 
 export default function PropertyWizard() {
@@ -24,11 +23,14 @@ export default function PropertyWizard() {
     city: "",
     locality: "",
     address: "",
+    Garaze:"",
+    Lift: "",
     area: "",
     bhk: "",
     bathrooms: "",
     price: "",
     amenities: [],
+    specification: [],
     images: [],
     description: "",
     name: "",
@@ -51,245 +53,211 @@ export default function PropertyWizard() {
         : [...formData.amenities, value],
     });
   };
+  const handleSpecification = (value) => {
+    setFormData({
+      ...formData,
+      specification: formData.specification.includes(value)
+        ? formData.specification.filter((a) => a !== value)
+        : [...formData.specification, value],
+    });
+  };
 
-  return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-xl rounded-2xl my-5">
-      
-      {/* Progress */}
-      <div className="flex justify-between mb-8">
-        {steps.map((s, i) => (
-          <div
-            key={i}
-            className={`text-sm font-medium ${
-              i === step ? "text-blue-600 border-b-2 border-blue-600" : "text-gray-400"
-            }`}
-          >
-            {s}
-          </div>
-        ))}
-      </div>
-       
-    {/* STEP CONTENT */}
-    {step === 0 && (
-        <div className="space-y-6 mb-8">
-            <div>
-                <label htmlFor="status" className="block text-lg font-semibold text-gray-700 mb-3">Who are you?</label>
-                <select 
-                    name="status" 
-                    id="status" 
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 bg-white text-gray-800 transition" 
-                    onChange={handleChange}
-                >
-                    <option value="">Select your role</option>
-                    <option>Owner</option>
-                    <option>Builder</option>
-                    <option>Broker</option>
-                </select>
-            </div>
-            
-            <div>
-                <label htmlFor="your-name" className="block text-lg font-semibold text-gray-700 mb-3">Your Name</label>
-                <input 
-                    name="name" 
-                    id="your-name" 
-                    placeholder="Enter your full name" 
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                    onChange={handleChange} 
-                />
-            </div>
-            
-            <div>
-                <label htmlFor="your-phone" className="block text-lg font-semibold text-gray-700 mb-3">Phone Number</label>
-                <input 
-                    id="your-phone" 
-                    name="phone" 
-                    placeholder="Enter your phone number" 
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                    onChange={handleChange} 
-                />
-            </div>
-            
-            <div>
-                <label htmlFor="email" className="block text-lg font-semibold text-gray-700 mb-3">Email Address</label>
-                <input 
-                    id="email" 
-                    name="email" 
-                    placeholder="Enter your email address" 
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                    onChange={handleChange} 
-                />
-            </div>
+
+const handleFileChange = (e, fileType) => {
+    setFormData({
+        ...formData,
+        [fileType]: [...(formData[fileType] || []), ...e.target.files],
+    });
+};
+
+return (
+    <div className="max-w-5xl mx-auto p-8 bg-white shadow-xl rounded-2xl my-5">
+        
+        {/* Progress Indicator */}
+        <div className="flex items-center justify-between mb-12">
+            {steps.map((s, i) => (
+                <div key={i} className="flex items-center">
+                    <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition ${
+                            i <= step
+                                ? "bg-[#2D548F] text-white"
+                                : "bg-gray-300 text-gray-600"
+                        }`}
+                    >
+                        {i + 1}
+                    </div>
+                    {i < steps.length - 1 && (
+                        <div
+                            className={`h-1 w-16 mx-2 transition ${
+                                i < step ? "bg-[#2D548F]" : "bg-gray-300"
+                            }`}
+                        />
+                    )}
+                </div>
+            ))}
         </div>
-    )}
 
-    {step === 1 && (
-        <div className="space-y-6 mb-8">
-            <div>
-                <label htmlFor="title" className="block text-lg font-semibold text-gray-700 mb-3">Property Title</label>
-                <input
-                    name="title"
-                    id="title"
-                    placeholder="Enter property title"
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition"
-                    onChange={handleChange}
-                    required
-                />
-            </div>
-            
-            <div>
-                <label htmlFor="propertytype" className="block text-lg font-semibold text-gray-700 mb-3">Property Type</label>
-                <select 
-                    name="propertyType" 
-                    id="propertytype" 
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 bg-white text-gray-800 transition" 
-                    onChange={handleChange}
+        <div className="flex gap-4 mb-6">
+            {steps.map((s, i) => (
+                <span
+                    key={i}
+                    className={`text-lg font-medium ${
+                        i === step ? "text-[#2D548F]" : "text-gray-400"
+                    }`}
                 >
-                    <option value="">Select property type</option>
+                    {s}
+                </span>
+            ))}
+        </div>
+
+        {/* Step Title */}
+        <h2 className="text-2xl font-bold text-gray-800 mb-8">
+            <span className="text-[#2D548F]">{step + 1}</span> {steps[step]}
+        </h2>
+
+        {/* STEP CONTENT */}
+        {step === 0 && (
+            <div className="space-y-6 mb-8">
+                <div>
+                    <label className="block text-lg font-semibold text-gray-700 mb-3">Who are you?</label>
+                    <select
+                        name="status"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 bg-white text-gray-600 transition"
+                        onChange={handleChange}
+                    >
+                        <option value="">Select your role</option>
+                        <option>Owner</option>
+                        <option>Builder</option>
+                        <option>Broker</option>
+                    </select>
+                </div>
+                    <div>
+                        <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
+                        <input
+                            name="email"
+                            placeholder="Enter your email address"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition"
+                            onChange={handleChange}
+                        />
+                    </div>
+                </div>
+        )}
+
+        {step === 1 && (
+            <div className="space-y-6 mb-8">
+                <input name="title" placeholder="Property Title" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                <select name="propertyType" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red bg-white text-gray-600 transition" onChange={handleChange}>
+                    <option>Select property type</option>
                     <option>Apartment</option>
                     <option>Villa</option>
                     <option>Plot</option>
                 </select>
-            </div>
-            
-            <div>
-                <label htmlFor="listingtype" className="block text-lg font-semibold text-gray-700 mb-3">Listing Type</label>
-                <select 
-                    name="listingType" 
-                    id="listingtype" 
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 bg-white text-gray-800 transition" 
-                    onChange={handleChange}
-                >
-            <option value="">All Types</option>
-            <option value="flat">Flat/Apartment</option>
-            <option value="house">House</option>
-            <option value="commercial">Commercial</option>
-            <option value="land">Land</option>
-            <option value="Plot">Plot</option>
+                <select name="listingType" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 bg-white text-gray-600 transition" onChange={handleChange}>
+                    <option>All Types</option>
+                    <option>Flat/Apartment</option>
+                    <option>House</option>
+                    <option>Commercial</option>
+                    <option>Land</option>
+                    <option>Plot</option>
                 </select>
             </div>
-        </div>
-    )}
-
-    {step === 2 && (
-        <div className="space-y-6 mb-8">
-            <input 
-                name="city" 
-                placeholder="City" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-            <input 
-                name="locality" 
-                placeholder="Locality" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-            <input 
-                name="address" 
-                placeholder="Full Address" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-        </div>
-    )}
-
-    {step === 3 && (
-        <div className="space-y-6 mb-8">
-            <input 
-                name="area" 
-                placeholder="Area (sq ft)" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-            <input 
-                name="bhk" 
-                placeholder="BHK" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-            <input 
-                name="bathrooms" 
-                placeholder="Bathrooms" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-        </div>
-    )}
-
-    {step === 4 && (
-        <div className="mb-8">
-            <input 
-                name="price" 
-                placeholder="Price" 
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange} 
-            />
-        </div>
-    )}
-
-    {step === 5 && (
-        <div className="mb-8">
-            <label className="block text-lg font-semibold text-gray-700 mb-4">Select Amenities</label>
-            <div className="grid grid-cols-2 gap-4">
-                {["Lift", "Parking", "Pool", "Gym", "Security"].map((a) => (
-                    <label key={a} className="flex items-center gap-3 p-3 border-2 border-gray-200 rounded-lg hover:border-blue-600 cursor-pointer transition">
-                        <input 
-                            type="checkbox" 
-                            onChange={() => handleAmenity(a)}
-                            className="w-5 h-5 cursor-pointer"
-                        />
-                        <span className="text-gray-700 font-medium">{a}</span>
-                    </label>
-                ))}
-            </div>
-        </div>
-    )}
-
-    {step === 6 && (
-        <div className="mb-8">
-            <label className="block text-lg font-semibold text-gray-700 mb-4">Upload Images</label>
-            <input 
-                type="file" 
-                multiple 
-                className="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition cursor-pointer" 
-            />
-        </div>
-    )}
-
-    {step === 7 && (
-        <div className="mb-8">
-            <label htmlFor="description" className="block text-lg font-semibold text-gray-700 mb-3">Property Description</label>
-            <textarea 
-                id="description" 
-                name="description" 
-                placeholder="Enter property description" 
-                rows="6"
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" 
-                onChange={handleChange}
-            />
-        </div>
-    )}
-      <div className="flex gap-4 mt-8">
-        <button
-          onClick={prevStep}
-          className="px-6 py-2 cursor-pointer nav-link"
-        >
-          Back
-        </button>
-
-        {step === steps.length - 1 ? (
-          <button className="px-6 py-2 bg-[#2D548F] cursor-pointer text-white rounded-lg">
-            Submit Property
-          </button>
-        ) : (
-          <button
-            onClick={nextStep}
-            className="cursor-pointer nav-link px-6 py-2"
-          >
-            Next
-          </button>
         )}
-      </div>
+
+        {step === 2 && (
+            <div className="space-y-4 mb-8">
+                <input name="city" placeholder="City" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                <input name="locality" placeholder="Locality" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                <input name="address" placeholder="Full Address" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+            </div>
+        )}
+
+{step === 3 && (
+    <div className="mb-8">
+        <label className="block text-lg font-semibold text-gray-700 mb-3">Property Description</label>
+        <textarea name="description" placeholder="Enter property description" rows="6" className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition" onChange={handleChange} />
     </div>
-  );
+)}
+        {step === 4 && (
+            <div className="space-y-4 mb-8">
+                <input name="area" placeholder="Area (sq ft)" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                <input name="bhk" placeholder="BHK" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                <input name="bathrooms" placeholder="Bathrooms" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                 <div className="grid grid-cols-2 gap-4">
+                 {["Garaze", "Lift"].map((a) => (
+                        <label key={a} htmlFor="checkbox_specification" className="flex items-center gap-3 p-3 border-2 border-gray-200 rounded-lg hover:border-blue-600 cursor-pointer transition">
+                            <input name="checkbox_specification" type="checkbox_specification" onChange={() => handleSpecification(a)} className="w-5 h-5 cursor-pointer border" />
+                            <span className="text-gray-700 font-medium">{a}</span>
+                        </label>
+                    ))}
+
+                 </div>
+            </div>
+        )}
+
+        {step === 5 && (
+            <div className="mb-8">
+                <div className="mb-5">
+                  <label className="text-gray-700 font-medium" htmlFor="sellPrice">Sell Price</label>
+                  <input type="text" name="sellPrice" placeholder="Sell Price" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+                </div>
+            <div className="mb-8">
+                <label className="text-gray-700 font-medium" htmlFor="price">Price</label>
+                <input name="price" placeholder="Price" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition" onChange={handleChange} />
+            </div>
+
+            </div>
+        )}
+
+        {step === 6 && (
+            <div className="mb-8">
+                <label className="block text-lg font-semibold text-gray-700 mb-4">Select Amenities</label>
+                <div className="grid grid-cols-2 gap-4">
+                    {["Lift", "Parking", "Pool", "Gym", "Security"].map((a) => (
+                        <label key={a} htmlFor="checkbox" className="flex items-center gap-3 p-3 border-2 border-gray-200 rounded-lg hover:border-blue-600 cursor-pointer transition">
+                            <input name="checkbox" type="checkbox" onChange={() => handleAmenity(a)} className="w-5 h-5 cursor-pointer" />
+                            <span className="text-gray-700 font-medium">{a}</span>
+                        </label>
+                    ))}
+                </div>
+            </div>
+        )}
+
+        {step === 7 && (
+            <div className="mb-8">
+                <div className="mb-5">
+                   <label className="block text-lg font-semibold text-gray-700 mb-4">Banner Images</label>
+                <input type="file" multiple className="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition cursor-pointer" />
+                </div>
+                <div>
+                    <label className="block text-lg font-semibold text-gray-700 mb-4">
+                        Gallery Images
+                    </label>
+                    <input
+                        type="file"
+                        multiple
+                        accept="image/*"
+                        className="w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg focus:outline-none focus:border-blue-600 transition cursor-pointer"
+                        onChange={(e) => handleFileChange(e, "galleryImages")}
+                    />
+                </div>
+            </div>
+        )}
+
+
+        <div className="flex justify-between gap-4 mt-12">
+            <button onClick={prevStep} className="px-6 py-3 text-gray-700 font-semibold rounded-lg hover:text-red-500 transition cursor-pointer">
+                Back
+            </button>
+            {step === steps.length - 1 ? (
+                <button className="px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg transition cursor-pointer">
+                    Submit Property
+                </button>
+            ) : (
+                <button onClick={nextStep} className="px-6 py-3 bg-[#2D548F] text-white font-semibold rounded-lg transition cursor-pointer flex items-center gap-2">
+                    Next <span>→</span>
+                </button>
+            )}
+        </div>
+    </div>
+);
 }

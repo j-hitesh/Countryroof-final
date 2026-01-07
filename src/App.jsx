@@ -11,7 +11,6 @@ function App() {
 
   return (
    <BrowserRouter >
-         <div className="min-h-screen flex flex-col z-1 absolute">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/PropertyDetails" element={<PropertyDetails/>}></Route>
@@ -19,7 +18,6 @@ function App() {
         <Route path="/Sign" element={<Sign/>}></Route>
         <Route path="/PostProperty" element={<PostPropertites/>}></Route>
       </Routes>
-       </div>
        <Footer/>
     </BrowserRouter>
   )

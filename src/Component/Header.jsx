@@ -28,9 +28,9 @@ const Header = () => {
 
           {/* RIGHT BUTTONS */}
           <div className="flex items-center gap-4">
-             <Link className="bg-[#1a4d5c] text-white px-4 py-2 rounded-md text-sm font-semibold" to="/PostProperty">Post Property</Link>
+             <Link className="bg-[#2D548F] text-white px-4 py-2 rounded-md text-sm font-semibold" to="/PostProperty">Post Property</Link>
             <button
-              className="bg-[#1a4d5c] text-white px-4 py-2 rounded-md text-sm font-semibold cursor-pointer"
+              className="bg-red-700 opacity-80 text-white px-4 py-2 rounded-md text-sm font-semibold cursor-pointer"
             >
               <Link to="/Login">
                 Login

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 // import { auth } from "../Component/FirebaseConfig";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -77,101 +77,120 @@ const Sign = () => {
     }
   };
 
- return (
-  <div className="min-h-screen flex flex-col">
-
-    <nav className="fixed top-0 left-0 w-full bg-[#FCFCFC] shadow-md z-50 h-20 font-poppins">
+return (
+  <div className="flex flex-col h-190">
+    <nav className="fixed top-0 left-0 w-full bg-[#FCFCFC] shadow-md z-50 h-20">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-4">
         <div className="flex items-center gap-3">
-          <img
-            src="https://countryroof.in/upload/logo/1819668946722953.png"
-            alt="logo"
-            className="w-30 md:w-40"
-          />
+          <Link to="/">
+            <img
+              src="https://countryroof.in/upload/logo/1819668946722953.png"
+              alt="logo"
+              className="w-30 md:w-40"
+            />
+          </Link>
         </div>
+
+        <Link
+          to="/PostProperty"
+          className="bg-[#2D548F] text-white px-4 py-2 rounded-md text-sm font-semibold" 
+        >
+          Post Property
+        </Link>
+
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          <i className="fa-solid fa-bars"></i>
+        </button>
       </div>
+ 
     </nav>
 
-    <div
-      className="flex flex-col items-center justify-center flex-1 px-4 pt-32 pb-10 bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('https://countryroof.in/upload/property/thambnail/1827637885326559.jpg')",
-      }}
-    >
-      <div className="bg-white/20 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl w-full max-w-md p-8">
-
+    <div className="flex flex-row items-center justify-center">
+      <div>
+       <img className="object-cover h-full" src="https://countryroof.in/upload/property/thambnail/1827637885326559.jpg" alt="Imgae" />
+      </div>
+      <div className="bg-white w-lg p-8 mt-25">
         <div className="flex justify-center mb-6">
           <img
             src="https://countryroof.in/upload/logo/1819668946722953.png"
             className="w-32"
           />
         </div>
-
-        {fireError && (
-          <p className="text-red-600 text-sm text-center mb-3">{fireError}</p>
-        )}
-
+        <button
+          disabled={loading}
+          className="w-full bg-white shadow-md flex items-center justify-center gap-3 py-3 rounded-lg border hover:bg-gray-100 transition cursor-pointer"
+        >
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            alt="Google"
+            className="w-5 h-5"
+          />
+          <span className="text-gray-800 font-medium">
+            Continue with Google
+          </span>
+        </button>
         <form onSubmit={handleSubmit} noValidate>
-
           <div className="mb-4">
-            <label className="text-white text-sm font-medium">Name</label>
+            <label className="text-gray-700 text-sm font-medium">Name</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`w-full bg-white/70 backdrop-blur border rounded-lg px-3 py-2 mt-1 ${
+              className={`w-full bg-gray-50 border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.name ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {errors.name && <p className="text-red-300 text-sm">{errors.name}</p>}
+            {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
           </div>
 
           <div className="mb-4">
-            <label className="text-white text-sm font-medium">Email</label>
+            <label className="text-gray-700 text-sm font-medium">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full bg-white/70 backdrop-blur border rounded-lg px-3 py-2 mt-1 ${
+              className={`w-full bg-gray-50 border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.email ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {errors.email && <p className="text-red-300 text-sm">{errors.email}</p>}
+            {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
 
           <div className="mb-4">
-            <label className="text-white text-sm font-medium">Password</label>
+            <label className="text-gray-700 text-sm font-medium">Password</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full bg-white/70 backdrop-blur border rounded-lg px-3 py-2 mt-1 ${
+              className={`w-full bg-gray-50 border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.password ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {errors.password && <p className="text-red-300 text-sm">{errors.password}</p>}
+            {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
 
           <div className="mb-4">
-            <label className="text-white text-sm font-medium">Phone</label>
+            <label className="text-gray-700 text-sm font-medium">Phone</label>
             <input
               type="tel"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className={`w-full bg-white/70 backdrop-blur border rounded-lg px-3 py-2 mt-1 ${
+              className={`w-full bg-gray-50 border rounded-lg px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.phone ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {errors.phone && <p className="text-red-300 text-sm">{errors.phone}</p>}
+            {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
           </div>
 
-          <label className="flex items-center gap-2 text-white text-sm mb-6">
+          <label className="flex items-center gap-2 text-gray-700 text-sm mb-6">
             <input
               type="checkbox"
               checked={remember}
               onChange={(e) => setRemember(e.target.checked)}
-              className="w-4 h-4"
+              className="w-4 h-4 rounded"
             />
             Remember me
           </label>
@@ -179,17 +198,17 @@ const Sign = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl shadow-lg transition disabled:opacity-60"
+            className="w-full bg-[#2D548F] hover:bg-blue-800 text-white py-2 rounded-lg shadow-lg transition disabled:opacity-60 font-medium"
           >
             {loading ? "Creating account..." : "Sign Up"}
           </button>
         </form>
 
-        <p className="text-center text-white mt-4">
+        <p className="text-center text-gray-700 mt-4">
           Already have an account?{" "}
           <span
             onClick={() => navigate("/login")}
-            className="underline cursor-pointer font-medium"
+            className="text-blue-600 underline cursor-pointer font-medium hover:text-blue-800"
           >
             Login
           </span>
