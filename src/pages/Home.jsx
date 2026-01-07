@@ -12,7 +12,7 @@ import WhyCountryroof from "../Component/WhyCountryroof";
 const Home = () => {
  
   return (
- <div className="mb-95 ">
+ <div>
    <Header/>
    <Hero/>
    <SearchBox/>

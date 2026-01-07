@@ -8,7 +8,7 @@ const Header = () => {
     <>
 
       <header className="bg-white border-b shadow-sm sticky top-0 z-50">
-        <div className="max-w-[1400px] mx-auto flex justify-between items-center p-4">
+        <div className="max-w-350 mx-auto flex justify-between items-center p-4">
           
           {/* LOGO */}
           <a href="#" className="logo">
