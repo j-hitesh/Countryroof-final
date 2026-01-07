@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Img1 from '../assets/Img/Image-1.png' 
+import Img2 from '../assets/Img/Image-2.png' 
+import Img3 from '../assets/Img/Image-3.png' 
 
 const Hero = () => {
   const [slide, setSlide] = useState(0);
 
   const slides = [
     {
-      img: "/Image/Image-1.png",
+      img: Img1,
       title: "Search, Compare & Buy Property in India’s Top 4 Cities",
       desc: "Transparent Prices. Trusted Builders. Smarter Decisions",
       widthClass: "w-[85%]",
       descWidth: "md:w-[29%]"
     },
     {
-      img: "/Image/Image-2.png",
+      img: Img2,
       title: "Premium Properties Across India’s Leading Cities",
       desc: "Gurugram • Delhi • Mumbai • Noida — All the Best Options in One Place.",
       widthClass: "w-[85%]",
       descWidth: "md:w-[40%]"
     },
     {
-      img: "/Image/Image-3.png",
+      img: Img3,
       title: "India’s Fastest-Growing Real Estate Hotspots — All in One Portal",
       desc: "Discover High-ROI Properties in Gurugram, Delhi, Mumbai & Noida.",
       widthClass: "w-[85%]",

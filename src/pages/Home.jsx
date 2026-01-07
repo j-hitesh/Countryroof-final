@@ -7,13 +7,12 @@ import TopDevelopers from "../Component/TopDevelopers";
 import FeaturedProperties from "../Component/FeaturedProperties";
 import Stats from "../Component/Stats";
 import WhyCountryroof from "../Component/WhyCountryroof";
-import FloorPlan from "../Component/FloorPlan";
 
 
 const Home = () => {
  
   return (
- <div>
+ <div className="mb-95 ">
    <Header/>
    <Hero/>
    <SearchBox/>
@@ -22,7 +21,6 @@ const Home = () => {
    <FeaturedProperties/>
    <Stats/>
    <WhyCountryroof/>
-   <FloorPlan/>
  </div>
   );
 };

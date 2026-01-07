@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const propertyData = [
   {
@@ -142,7 +143,7 @@ const FeaturedProperties = () => {
                 {/* ACTION BUTTONS */}
                 <div className="flex flex-col gap-2 mt-4">
                   <button className="bg-[#1a4d5c] text-white py-2 rounded-md text-sm font-semibold">
-                    Send Inquiry
+                   <Link to="/PropertyDetails">Details</Link>
                   </button>
 
                   <button

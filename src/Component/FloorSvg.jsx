@@ -1,4 +1,4 @@
-import floorImg from "../assets/Img/Floor1bhk.svg";
+// import floorImg from "../assets/Img/Floor1bhk.svg";
 import { useState } from "react";
 
 const FloorPlan = () => {
@@ -12,10 +12,8 @@ const FloorPlan = () => {
   return (
     <div className="relative w-[700px] mx-auto">
 
-      {/* IMAGE */}
       <img src={floorImg} alt="Floor Plan" className="w-full" />
 
-      {/* SVG OVERLAY */}
       <svg
         viewBox="0 0 1024 768"
         className="absolute inset-0 w-full h-full"
@@ -24,15 +22,13 @@ const FloorPlan = () => {
         id="bedroom"
         d="M123 456 H456 V789 Z"
         className={`${roomClass("bedroom")} cursor-pointer transition-all`}
-        onClick={() => setActiveRoom("bedroom")}
-      />
+        onClick={() => setActiveRoom("bedroom")}/>
 
       <path
         id="kitchen"
         d="M500 100 H800 V300 Z"
         className={`${roomClass("kitchen")} cursor-pointer transition-all`}
-        onClick={() => setActiveRoom("kitchen")}
-      />
+        onClick={() => setActiveRoom("kitchen")}/>
 
       <path
         id="combath"

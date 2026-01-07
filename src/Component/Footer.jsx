@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-[#1a4d5c] text-white mt-20">
-      <div className="max-w-[1400px] mx-auto px-6 py-16">
+    <footer className="bg-[#1a4d5c] text-white fixed bottom-0 w-full rounded-t-lg">
+      <div className="max-w-350 mx-auto px-6 py-10">
 
         {/* TOP GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
