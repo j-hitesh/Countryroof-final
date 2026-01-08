@@ -112,7 +112,7 @@ return (
 
         {/* Step Title */}
         <h2 className="text-2xl font-bold text-gray-800 mb-8">
-            <span className="text-[#2D548F]">{step + 1+"."}</span> {steps[step]}
+            <span className="text-[#2D548F]">{step + 1 +"."}</span> {steps[step]}
         </h2>
 
         {/* STEP CONTENT */}

@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBox = () => {
   return (
-    <section className="max-w-[1400px] mx-auto px-6 relative -mt-10 z-20">
+    <section className="max-w-350 mx-auto px-6 relative -mt-10 z-20">
       <div className="bg-white shadow-lg p-6 rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
 
         {/* CITY */}

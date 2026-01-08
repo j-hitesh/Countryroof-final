@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -32,6 +32,8 @@ const Footer = () => {
               <li><a href="#properties" className="hover:text-white">Properties</a></li>
               <li><a href="#why-us" className="hover:text-white">Why Countryroof</a></li>
               <li><a href="#" className="hover:text-white">Post Property</a></li>
+              <li><Link to="/about">About Us</Link></li>
+              <li><Link to="/contact">Contact Us</Link></li>
             </ul>
           </div>
 
