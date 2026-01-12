@@ -5,25 +5,22 @@ const Header = () => {
   
 
   return (
-    <>
-
-      <header className="bg-white border-b shadow-sm sticky top-0 z-50">
+    <header className="bg-white border-b shadow-sm sticky top-0 z-50">
         <div className="max-w-350 mx-auto flex justify-between items-center p-4">
           
           {/* LOGO */}
-          <a href="#" className="logo">
+          <Link to="/">
             <img
               src="https://countryroof.in/upload/logo/1819668946722953.png"
               alt="logo"
               className="w-32"
             />
-          </a>
+          </Link>
 
           {/* NAVIGATION */}
           <nav className="hidden md:flex gap-8 font-medium">
-            <a href="#properties">Properties</a>
-            <a href="#why-us">Why countryroof</a>
-            <a href="#contact">Contact</a>
+            <Link to="/properties">Properties</Link>
+           
           </nav>
 
           {/* RIGHT BUTTONS */}
@@ -39,8 +36,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-
-    </>
   );
 };
 

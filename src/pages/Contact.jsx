@@ -1,7 +1,38 @@
-import React from 'react';
-
+import { Link } from "react-router-dom"
 const ContactUs = () => {
   return (
+    <>
+   <header className="bg-white border-b shadow-sm sticky top-0 z-50">
+        <div className="max-w-350 mx-auto flex justify-between items-center p-4">
+          
+          {/* LOGO */}
+          <Link to="/">
+            <img
+              src="https://countryroof.in/upload/logo/1819668946722953.png"
+              alt="logo"
+              className="w-32"
+            />
+          </Link>
+
+          {/* NAVIGATION */}
+          <nav className="hidden md:flex gap-8 font-medium">
+            <Link to="/properties">Properties</Link>
+           
+          </nav>
+
+          {/* RIGHT BUTTONS */}
+          <div className="flex items-center gap-4">
+             <Link className="bg-[#2D548F] text-white px-4 py-2 rounded-md text-sm font-semibold" to="/PostProperty">Post Property</Link>
+            <button
+              className="bg-red-700 opacity-80 text-white px-4 py-2 rounded-md text-sm font-semibold cursor-pointer"
+            >
+              <Link to="/Login">
+                Login
+              </Link>
+            </button>
+          </div>
+        </div>
+      </header>
     <section className="px-6 sm:px-12 lg:px-20 bg-blue-100 py-8">
       <div className="text-center mb-6">
         <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl mb-4">Let's Connect</h2>
@@ -10,7 +41,7 @@ const ContactUs = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 my-8 bg-white/50 rounded-lg backdrop-blur-md max-w-6xl mx-auto p-4 gap-8 shadow-lg">
         <iframe 
-          className="w-full h-80 sm:h-[400px] rounded-lg shadow-md"
+          className="w-full h-80 sm:h-100 rounded-lg shadow-md"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56134.78012972459!2d76.99285200475691!3d28.436639624464842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce458d0000001%3A0xb832ca965fff5828!2sCountryroof%20Infratech%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1767863587416!5m2!1sen!2sin"
           allowFullScreen 
           loading="lazy" 
@@ -81,6 +112,7 @@ const ContactUs = () => {
           </ul>
         </div>
     </section>
+    </>
   );
 };
 
