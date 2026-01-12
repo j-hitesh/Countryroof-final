@@ -7,6 +7,8 @@ import Sign from "./pages/Sign";
 import PostPropertites from "./pages/PostPropertites";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Privacy from "./pages/Privacy";
+import Termscondition from "./pages/Termscondition";
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
         <Route path="/PostProperty" element={<PostPropertites/>}></Route>
         <Route path="/About" element={<About/>}></Route>
         <Route path="/Contact" element={<Contact/>}></Route>
+        <Route path="/Privacy" element={<Privacy/>}></Route>
+        <Route path="/Termscondition" element={<Termscondition/>}></Route>
       </Routes>
        <Footer/>
     </BrowserRouter>

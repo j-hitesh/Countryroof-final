@@ -13,7 +13,7 @@ const Footer = () => {
             <img
               src="https://countryroof.in/upload/logo/1819668946722953.png"
               alt="Countryroof"
-              className="w-40 mb-4"
+              className="w-40 mb-4 bg-white rounded"
             />
             <p className="text-sm text-white/80 leading-relaxed">
               Countryroof is a trusted real estate platform offering verified
@@ -28,12 +28,13 @@ const Footer = () => {
               Quick Links
             </h4>
             <ul className="space-y-3 text-sm text-white/80">
-              <li><a href="#" className="hover:text-white">Home</a></li>
-              <li><a href="#properties" className="hover:text-white">Properties</a></li>
-              <li><a href="#why-us" className="hover:text-white">Why Countryroof</a></li>
-              <li><a href="#" className="hover:text-white">Post Property</a></li>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/postproperty">Post Property</Link></li>
               <li><Link to="/about">About Us</Link></li>
               <li><Link to="/contact">Contact Us</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/termscondition">Terms & Conditions</Link></li>
+
             </ul>
           </div>
 
