@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import { Link } from "react-router-dom";
 
 const TopDevelopers = () => {
   return (
@@ -38,9 +39,9 @@ const TopDevelopers = () => {
                 Commercial
               </span>
             </div>
-            <button className="text-blue-600 font-semibold text-sm">
+            <Link to="/Devloper" className="text-blue-600 font-semibold text-sm">
               View Projects →
-            </button>
+            </Link>
           </div>
 
           {/* JMD */}

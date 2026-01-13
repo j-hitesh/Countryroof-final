@@ -1,12 +1,11 @@
-
+import {Link} from "react-router-dom"
 
 const About = () => {
   return (
     <>
      <header className="bg-white border-b shadow-sm sticky top-0 z-50">
         <div className="max-w-350 mx-auto flex justify-between items-center p-4">
-          
-          {/* LOGO */}
+    
           <Link to="/">
             <img
               src="https://countryroof.in/upload/logo/1819668946722953.png"
